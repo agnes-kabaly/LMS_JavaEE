@@ -2,6 +2,7 @@ package application;
 
 import dal.UserDAO;
 import dal.implDAO.UserHandler;
+import model.Role;
 import model.User;
 
 import javax.persistence.EntityManager;
@@ -23,7 +24,9 @@ public class ApplicationContextListener implements ServletContextListener {
 
         UserDAO userHandler = new UserHandler();
 
-        User user1 = new User("Ő Kovács Ő Béla");
+        User user1 = new User("Béla", "Kovács");
+        user1.setRole(Role.MENTOR);
+
         entityManager.persist(user1);
 
     }

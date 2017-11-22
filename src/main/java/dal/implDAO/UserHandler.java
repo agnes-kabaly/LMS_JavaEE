@@ -20,4 +20,12 @@ public class UserHandler implements UserDAO {
         entityManager.persist(user);
     }
 
+    @Override
+    public User getUser(int id) {
+        String query = String.format("SELECT u FROM %s u WHERE id = %s", User.class.getName(), id);
+        User user = entityManager.createQuery(query, User.class).getSingleResult();
+        return user;
+    }
+
+
 }

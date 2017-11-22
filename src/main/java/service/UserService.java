@@ -1,6 +1,7 @@
 package service;
 
 import dal.UserDAO;
+import model.Role;
 import model.User;
 
 import javax.inject.Inject;
@@ -12,7 +13,7 @@ import javax.ws.rs.Path;
 public class UserService {
 
     @Inject
-    UserDAO beleveremasd;
+    UserDAO userHandler;
 
     @GET
     @Path("/")
@@ -24,7 +25,12 @@ public class UserService {
     @Path("user")
     @Transactional
     public void saveUser() {
-        User user33 = new User("MÓNI belebele");
-        beleveremasd.storeUser(user33);
+        User user33 = new User("Jenő", "Diák");
+        user33.setRole(Role.DIÁK);
+        userHandler.storeUser(user33);
+        System.out.println(userHandler.getUser(1));
+
     }
+
+
 }
