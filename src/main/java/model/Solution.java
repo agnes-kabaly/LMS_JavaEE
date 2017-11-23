@@ -13,8 +13,6 @@ public class Solution {
     @Column (nullable = false)
     private int userId;
 
-    //@ManyToOne (fetch = FetchType.EAGER)
-    //@JoinColumn(name = "id")
     @Column (nullable = false)
     private int curriculumId;
 
@@ -27,6 +25,7 @@ public class Solution {
 
     private String evaluatedBy;
 
+    @Column (columnDefinition = "int default 0")
     private int points;
 
     private String mentorComment;
@@ -34,6 +33,18 @@ public class Solution {
     private LocalDateTime evaluationDate;
 
     public Solution() {
+    }
+
+    public Solution(int userId, int curriculumId, String solutionContent, String comment, LocalDateTime postedDate, String evaluatedBy, int points, String mentorComment, LocalDateTime evaluationDate) {
+        this.userId = userId;
+        this.curriculumId = curriculumId;
+        this.solutionContent = solutionContent;
+        this.comment = comment;
+        this.postedDate = postedDate;
+        this.evaluatedBy = evaluatedBy;
+        this.points = points;
+        this.mentorComment = mentorComment;
+        this.evaluationDate = evaluationDate;
     }
 
     public Solution(int userId, int curriculumId, LocalDateTime postedDate) {
