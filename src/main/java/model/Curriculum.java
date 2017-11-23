@@ -10,12 +10,16 @@ public class Curriculum {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column (nullable = false)
     private String title;
 
+    @Column (nullable = false)
     private boolean isPublished;
 
+    @Column (nullable = false)
     private String content;
 
+    @Column (nullable = false)
     private String author;
 
     private LocalDateTime postedDate;
@@ -27,9 +31,21 @@ public class Curriculum {
     public Curriculum() {
     }
 
-    public Curriculum(LocalDateTime postedDate, LocalDateTime deadline) {
+    public Curriculum(String title, boolean isPublished, String content, String author) {
+        this.title = title;
+        this.isPublished = isPublished;
+        this.content = content;
+        this.author = author;
+    }
+
+    public Curriculum(String title, boolean isPublished, String content, String author, LocalDateTime postedDate, LocalDateTime deadline, int maxPoint) {
+        this.title = title;
+        this.isPublished = isPublished;
+        this.content = content;
+        this.author = author;
         this.postedDate = postedDate;
         this.deadline = deadline;
+        this.maxPoint = maxPoint;
     }
 
     public int getId() {

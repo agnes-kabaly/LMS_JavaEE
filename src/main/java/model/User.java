@@ -10,21 +10,36 @@ public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column (nullable = false)
     private String email;
 
+    //@Column (nullable = false)
     private String password;
 
+    @Column (nullable = false)
     @Enumerated (EnumType.STRING)
     private Role role;
 
+    @Column (nullable = false)
     private String firstName;
 
+    @Column (nullable = false)
     private String lastName;
 
     public User() {
     }
 
-    public User(String firstName, String lastName) {
+    public User(String email, Role role, String firstName, String lastName) {
+        this.email = email;
+        this.role = role;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public User(String email, String password, Role role, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -67,6 +82,10 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

@@ -2,6 +2,7 @@ package application;
 
 import model.Curriculum;
 import model.Role;
+import model.Solution;
 import model.User;
 
 import javax.persistence.EntityManager;
@@ -22,13 +23,18 @@ public class ApplicationContextListener implements ServletContextListener {
     @Transactional
     public void contextInitialized(ServletContextEvent sce) {
 
-        User user1 = new User("Béla", "Kovács");
+        User user1 = new User();
+        user1.setFirstName("Béla");
+        user1.setLastName("Kovács");
+        user1.setEmail("kovacs@mentor.com");
         user1.setRole(Role.MENTOR);
 
-        Curriculum curriculum = new Curriculum(LocalDateTime.now(), LocalDateTime.now().plusDays(7L));
+        Curriculum curriculum = new Curriculum("Practice MySQL", true, "Create some data...", "Kovács Béla", LocalDateTime.now(), LocalDateTime.now().plusDays(7L), 10);
+        Solution solution = new Solution(1, 1, LocalDateTime.now());
 
         entityManager.persist(user1);
         entityManager.persist(curriculum);
+        entityManager.persist(solution);
     }
 
     @Override

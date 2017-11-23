@@ -25,9 +25,12 @@ public class UserService {
     @Path("user")
     @Transactional
     public void saveUser() {
-        User user2 = new User("Jenő", "Diák");
-        user2.setRole(Role.STUDENT);
-        userHandler.storeUser(user2);
+        User user = new User();
+        user.setFirstName("Jenő2");
+        user.setLastName("Diák2");
+        user.setEmail("jeno@diak2.com");
+        user.setRole(Role.STUDENT);
+        userHandler.storeUser(user);
         System.out.println(userHandler.getUser(1));
 
     }
